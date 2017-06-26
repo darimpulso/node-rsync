@@ -1021,11 +1021,11 @@ function escapeFileArg(filename) {
   if (!/(\\\\)/.test(filename)) {
     return filename;
   }
-  // Under Windows rsync (with cygwin) and OpenSSH for Windows
+  // Under Windows rsync and OpenSSH for Windows
   // (http://www.mls-software.com/opensshd.html) are using 
   // standard linux directory separator so need to replace it
   if ('win32' === process.platform) {
-    filename = filename.replace(/\\\\/g,'/').replace(/^["]?[A-Z]\:\//ig,'/');
+    filename = filename.replace(/\\\\/g,'\\').replace(/^["]?[A-Z]\:\\/ig,'\\');
   }
   return filename;
 }
